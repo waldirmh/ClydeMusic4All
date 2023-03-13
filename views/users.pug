@@ -1,0 +1,40 @@
+extends dashboard
+
+block main
+  div.add
+    h1=title
+    a.btn.btn-primary(href='/newUsers') Nuevo usuario
+  hr
+  div.ocultaTabla
+    if error
+      div.alert.alert-danger(role='alert') #{error}
+    else if message
+      div.alert.alert-danger(role='alert') #{message}
+      //button(type='button' class='btn btn-' + btnType + ' btn-' + btnSize)
+    else
+      table.table.table-striped.table-hover
+        thead
+          th Id
+          th Nombre
+          th Fecha Crea
+          th Fecha Modif
+          th Estado
+          th Acciones
+        tbody
+          each item, index in users
+            tr
+              td #{item.principal_id}
+              td(name=item.name) #{item.name}
+              td #{item.create_date}
+              td #{item.modify_date}
+              td
+                div
+                  if !item.is_disabled 
+                    a.btn.btn-success.mx-1(name='active' href='/changeStatus?status=1'+'&user='+item.name) Desactivar
+                  else 
+                    a.btn.btn-secondary.mx-1(name='disable' href='/changeStatus?status=0'+'&user='+item.name) Activar
+              td
+                div
+                  a.btn.btn-primary.mx-1(href='/changePassword?name='+item.name) Cambiar contraseña
+                  a.btn.btn-primary.mx-1(href='/rolesUsersServer?name='+item.name) Roles del servidor
+                  a.btn.btn-primary.mx-1(href='/assignDatabase?name='+item.name) Asignar DB

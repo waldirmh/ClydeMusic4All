@@ -1,0 +1,27 @@
+extends dashboard
+
+block main
+  h1=title
+  hr
+  div.ocultaTabla
+    if success
+      div.alert.alert-success(role='alert') #{success}
+    if error
+      div.alert.alert-danger(role='alert') #{error}
+    else
+      table.table.table-striped.table-hover
+        thead
+          tr
+            each row in headers
+              th=row.COLUMN_NAME
+          tr Acciones
+        tbody
+          each row in tables
+            tr
+              each celda in row
+                td=celda
+              td
+                div
+                  a.btn.btn-primary.mx-1(href='#') Actualizar
+                  a.btn.btn-danger.mx-1(href='/deleteRow?title='+headers[0].COLUMN_NAME+'&data='+row[headers[0].COLUMN_NAME]+'&database='+database+'&table='+table) Eliminar
+          

@@ -1,0 +1,28 @@
+extends dashboard
+
+block main
+  h1=title
+  hr
+  div.ocultaTabla
+    if message
+      div.alert.alert-danger(role='alert') #{message}
+    else
+      table.table.table-striped.table-hover
+        thead
+          th Id
+          th Nombre
+          th Fecha Crea
+          th Estado
+          th Acciones
+        tbody
+          each item, index in databases
+            tr
+              td #{item.database_id}
+              td #{item.name}
+              td #{item.create_date}
+              td #{item.state_desc}
+              td
+                div
+                  a.btn.btn-primary.mx-1(href='/showDatabase/'+item.name) Ingresar
+                  a.btn.btn-primary.mx-1(href="/usersToDatabase/"+item.name) Permisos
+                  a.btn.btn-primary.mx-1(href="/usersToRoles/"+item.name) Roles

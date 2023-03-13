@@ -1,0 +1,46 @@
+extends dashboard 
+block main 
+  h1=title
+  if message
+    div.alert.alert-danger(role='alert') #{message}
+  else
+    div.row
+      div.col-6 
+        hr
+        div.my-custom-scrollbar.table-wrapper-scroll-y
+            table.table.table-striped.table-hover
+              thead
+                th Nombre de tabla
+                th Permiso
+                th Acciones
+              tbody
+                each item, index in permissions
+                  tr
+                    td #{item.TableName}
+                    td #{item.Permission}
+                    td 
+                      div
+                        a.btn.btn-danger.mx-1(href='/deletePermission?database='+database+'&user='+user+'&table='+item.TableName+'&type='+item.Permission) Quitar
+
+      div.col-6 
+        hr
+        div.my-custom-scrollbar.table-wrapper-scroll-y
+            table.table.table-striped.table-hover
+              thead
+                th Nombre
+                th Otorgar permisos
+              tbody
+                each item, index in tables
+                  tr
+                    td #{item.name}
+                    td
+                      div
+                        if item.insert
+                          a.btn.btn-primary.mx-1(href='/insertPermission?database='+database+'&user='+user+'&table='+item.name+'&type=INSERT') INSERT
+                        if item.select
+                          a.btn.btn-info.mx-1(href='/insertPermission?database='+database+'&user='+user+'&table='+item.name+'&type=SELECT') SELECT
+                        if item.update
+                          a.btn.btn-success.mx-1(href='/insertPermission?database='+database+'&user='+user+'&table='+item.name+'&type=UPDATE') UPDATE
+                        if item.delete
+                          a.btn.btn-warning.mx-1(href='/insertPermission?database='+database+'&user='+user+'&table='+item.name+'&type=DELETE') DELETE
+              

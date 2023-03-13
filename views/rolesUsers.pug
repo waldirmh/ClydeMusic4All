@@ -1,0 +1,40 @@
+extends dashboard
+
+block main
+  h1=title
+  if message 
+    div.alert.alert-danger(role='alert') #{message}
+  else
+    div.row
+      div.col-6
+        hr
+        div.my-custom-scrollbar.table-wrapper-scroll-y
+          table.table.table-striped.table-hover
+            thead
+              th Id
+              th Rol
+              th Acciones
+            tbody 
+              each item in rolesBy
+                tr
+                  td #{item.principal_id}
+                  td #{item.name}
+                  td 
+                    div
+                      a.btn.btn-danger.mx-1(href='/deleteRol?rol='+item.name+'&user='+user+'&database='+database) Quitar
+      div.col-6
+        hr
+        div.my-custom-scrollbar.table-wrapper-scroll-y
+          table.table.table-striped.table-hover
+            thead
+              th Id
+              th Rol
+              th Acciones
+            tbody
+              each item in roles
+                tr
+                  td #{item.Principal_ID}
+                  td #{item.Role_Name}
+                  td 
+                    div
+                      a.btn.btn-success.mx-1(href='/addRol?rol='+item.Role_Name+'&user='+user+'&database='+database) Agregar

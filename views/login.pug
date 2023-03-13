@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  section.background-1.d-flex.align-items-center.pt-5.pb-5.min-vh-100
+    div.container
+      div.text-center.pb-2
+        h2.text-light ClydeMusic4All
+        h4.text-light -Ingreso-
+      div.row.d-flex.justify-content-center.align-items-center.h-100
+        div.col-md-9.col-lg-6.col-xl-5
+          img(src='https://img.freepik.com/foto-gratis/cerca-mano-guitarrista-tocando-guitarra-copyspace-macro-shot_155003-42125.jpg?w=740&t=st=1674847477~exp=1674848077~hmac=c604c12a33ab9dd4e46bbd151dbbb17964e5a541d54344a3f54163021a0ee3bb', alt="music guitar").img-fluid
+        div.col-md-8.col-lg-6.col-xl-4.offset-xl-1
+          form.pt-5.pb-5(method="POST" action="/sign-in")
+            div.form-outline.mb-4
+              label.form-label.text-light Cuenta SQL Server
+              input.form-control.form-control-lg(type="text",placeholder="Ingrese usuario", name="user")
+            div.form-outline.mb-3
+              label.form-label.text-light Contraseña
+              input.form-control.form-control-lg(type="password",placeholder="Ingrese contraseña", name="password")
+            div.text-center.text-lg-start.mt-4.pt-2
+              button.btn.btn-primary.btn-lg.text-light(type='submit') Ingresar
+              p.small.fw-bold.mt-2.pt-1.mb-0.text-light Para tener una cuenta contacte con el administrador
+      if error
+        div.alert.alert-danger(role='alert') #{error}
+            
+              
+

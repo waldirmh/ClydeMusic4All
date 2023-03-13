@@ -1,0 +1,18 @@
+extends dashboard
+
+block main
+  h1=title
+  
+  form.pt-5.pb-5(method="POST" action="/newUsers")
+    div.form-outline.mb-4
+      label.form-label Nuevo usuario
+      input.form-control.form-control-lg(type="text",placeholder="Ingrese nuevo usuario", name="newUser") 
+    div.form-outline.mb-3
+      label.form-label Nueva Contraseña
+      input.form-control.form-control-lg(type="password",placeholder="Nueva contraseña", name="newPassword")
+    div.text-center.text-lg-start.mt-4.pt-2
+      button.btn.btn-primary.btn-lg(type='submit') Guardar
+    if success
+      div.alert.alert-success.mt-4(role='alert') #{success}
+    if error
+      div.alert.alert-danger.mt-4(role='alert') #{error}

@@ -1,0 +1,25 @@
+{
+  "name": "clydemusic4ll",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node bin/www.js",
+    "start:dev": "nodemon bin/www.js"
+  },
+  "dependencies": {
+    "@vitalets/google-translate-api": "^9.1.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "moment": "^2.29.4",
+    "morgan": "~1.9.1",
+    "node-localstorage": "^2.2.1",
+    "node-traductor": "^1.0.0",
+    "pug": "2.0.0-beta11",
+    "sequelize": "^6.28.0",
+    "snowflake-sdk": "^1.6.17",
+    "tedious": "^15.1.2"
+  }
+}

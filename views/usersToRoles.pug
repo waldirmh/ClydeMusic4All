@@ -1,0 +1,26 @@
+extends dashboard 
+block main 
+  h1=title
+  hr
+  div.my-custom-scrollbar.table-wrapper-scroll-y
+    if message
+      div.alert.alert-danger(role='alert') #{message}
+    else
+      table.table.table-striped.table-hover
+        thead
+          th Id
+          th Nombre
+          th Tipo
+          th Fecha Creacion
+          th Fecha Modificacion
+        tbody
+          each item, index in users
+            tr
+              td #{item.principal_id}
+              td #{item.name}
+              td #{item.type}
+              td #{item.create_date}
+              td #{item.modify_date}
+              td
+                div
+                  a.btn.btn-primary.mx-1(href='/rolesUsers?database='+name+'&user='+item.name) Roles

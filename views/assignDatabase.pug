@@ -1,0 +1,26 @@
+extends dashboard
+
+block main
+  h1=title
+  hr
+  div.ocultaTabla
+    if message
+      div.alert.alert-danger(role='alert') #{message}
+    else
+      table.table.table-striped.table-hover
+        thead
+          th Id
+          th Nombre
+          th Acciones
+        tbody
+          each item, index in databases
+            tr
+              td #{item.database_id}
+              td #{item.name}
+              td
+                div
+                  a.btn.btn-primary.mx-1(href='/assignDatabaseAction?user='+user+'&database='+item.name) Asignar
+  if success
+      div.alert.alert-success(role='alert') #{success}
+  if error
+      div.alert.alert-error(role='alert') #{error}

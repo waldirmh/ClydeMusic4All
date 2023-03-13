@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  //header
+  div.container-fluid.background-1
+    div.row.justify-content-center.align-content-center
+      div.col-10.barra
+        h4.text-light ClydeMusic4All
+      div.col-2.text-right.barra
+        ul.navbar-nav.mr-auto
+          li.text-end
+            a(href='#' role='button' )
+              i.fas.fa-user-circle.user
+  //sidebar
+  div.container-fluid
+    div.row
+      div.barra-lateral.col-12.col-sm-auto
+        nav.menu.d-flex.d-sm-block.justify-content-center.flex-wrap
+          a(href='/')
+            i.fas.fa-home
+            span Home
+          a(href='/users')
+            i.fas.fa-users
+            span Logins
+          a(href='/databases')
+            i.fas.fa-database
+            span Bases de datos
+          a(href='/sign-out')
+            i.fas.fa-sign-out-alt
+            span Salir
+      main.main.col.principal
+        block main

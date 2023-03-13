@@ -1,0 +1,24 @@
+extends dashboard
+
+block main
+  h1=title
+  div.ocultaTabla
+    if message
+      div.alert.alert-danger(role='alert') #{message}
+    else
+      table.table.table-striped.table-hover
+        thead
+          th Id
+          th Nombre
+          th Fecha Crea.
+          th Fecha Mod.
+        tbody
+          each item, index in tables
+            tr
+              td #{item.object_id}
+              td #{item.name}
+              td #{item.create_date}
+              td #{item.modify_date}
+              td
+                div
+                  a.btn.btn-primary.mx-1(href='/table?database='+title+'&table='+item.name) Ver
